@@ -21,6 +21,7 @@ public class Hirsipuu {
 
             hirsipuu.arvaaKirjain(kirjain);
             System.out.println(hirsipuu.arvatutKirjaimet());
+            System.out.println("Virheiden lukumäärä: " + hirsipuu.virheidenLukumaara());
             if (hirsipuu.virheitaHavioon() == 0) {
                 System.out.println("Hävisit pelin.");
                 break;
