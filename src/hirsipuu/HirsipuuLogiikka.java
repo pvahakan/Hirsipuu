@@ -28,10 +28,10 @@ public class HirsipuuLogiikka {
         kirjain = kirjain.toUpperCase(); // iso kirjain
 
         // Tutkitaan, onko kirjainta vielä arvattu
-        if (this.arvatutKirjaimet.indexOf(kirjain) == -1) {
+        if (!this.arvatutKirjaimet.contains(kirjain)) {
             arvatutKirjaimet += kirjain;
 
-            if (this.sana.indexOf(kirjain) == -1) {
+            if (!this.sana.contains(kirjain)) {
                 this.virheidenLukumaara += 1;
             }
         }
@@ -39,7 +39,27 @@ public class HirsipuuLogiikka {
     }
 
     public String salattuSana() {
-        // tulostaa esim KISS_
-        return this.arvatutKirjaimet;
+        String salattuSana = ""; // Palautettava merkkijono
+        
+        // Muodostetaan taulukko arvattavan sanan merkeistä
+        char[] sanaTaulukko = this.sana.toCharArray();
+        
+        /* Tutkitaan merkki kerrallaan, onko arvattavassa sanassa oleva
+        kirjain arvattujen kirjainten listalla. Huom. arvattava sana käydään
+        järjestyksessä alusta lähtien läpi, jolloin merkkien lisäys 
+        toimii. */
+        
+        for (char i : sanaTaulukko) {
+            if (!this.arvatutKirjaimet.contains(i+"")) {
+                salattuSana += '_';
+            } else {
+                salattuSana += i;
+            }
+        }
+        if (!salattuSana.contains("_")) {
+            System.out.println("Hienoa, arvasit sanan!");
+        }
+        return salattuSana;
     }
+
 }
