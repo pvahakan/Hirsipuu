@@ -11,6 +11,7 @@ public class Hirsipuu {
         log.arvaaKirjain("s");
         log.arvaaKirjain("f"); // virhe
         log.arvaaKirjain("d"); // virhe
+        log.arvaaKirjain("e"); // virhe
 
         System.out.println("Arvatut kirjaimet: " + log.arvatutKirjaimet());
         System.out.println("Virheiden lukumäärä: " + log.virheidenLukumaara());
