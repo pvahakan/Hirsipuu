@@ -1,28 +1,33 @@
 package hirsipuu;
 
+import java.util.Scanner;
+
 public class Hirsipuu {
 
     public static void main(String[] args) {
 
-        HirsipuuLogiikka log = new HirsipuuLogiikka("Kissa");
-        System.out.println(log.salattuSana());
-        
-        log.arvaaKirjain("A");
-        System.out.println(log.salattuSana());
-        log.arvaaKirjain("d"); // virhe
-        System.out.println(log.salattuSana());
-        log.arvaaKirjain("s");
-        System.out.println(log.salattuSana());
-        log.arvaaKirjain("f"); // virhe
-        System.out.println(log.salattuSana());
-        log.arvaaKirjain("k"); 
-        System.out.println(log.salattuSana());
-        log.arvaaKirjain("i");
-        System.out.println(log.salattuSana());
-        
-                
-        System.out.println("Arvatut kirjaimet: " + log.arvatutKirjaimet());
-        System.out.println("Virheiden lukumäärä: " + log.virheidenLukumaara());
+        HirsipuuLogiikka hirsipuu = new HirsipuuLogiikka("aavasaksanvaara");
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println(hirsipuu.salattuSana());
+
+        while (!hirsipuu.arvattu) {
+            System.out.print("Arvaa kirjain: ");
+            String kirjain = scan.next();
+            while (kirjain.length() != 1) {
+                System.out.print("Arvaa kirjain: ");
+                kirjain = scan.next();
+            }
+
+            hirsipuu.arvaaKirjain(kirjain);
+            System.out.println(hirsipuu.arvatutKirjaimet());
+            if (hirsipuu.virheitaHavioon() == 0) {
+                System.out.println("Hävisit pelin.");
+                break;
+            } else {
+                System.out.println(hirsipuu.salattuSana());
+            }
+        }
 
     }
 

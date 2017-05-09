@@ -5,6 +5,8 @@ public class HirsipuuLogiikka {
     private String sana;
     private String arvatutKirjaimet;
     private int virheidenLukumaara;
+    
+    public boolean arvattu = false;
 
     public HirsipuuLogiikka(String sana) {
         this.sana = sana.toUpperCase();
@@ -17,11 +19,11 @@ public class HirsipuuLogiikka {
     }
 
     public String arvatutKirjaimet() {
-        return this.arvatutKirjaimet;
+        return "Arvattu: " + this.arvatutKirjaimet;
     }
 
     public int virheitaHavioon() {
-        return 12;
+        return 12 - this.virheidenLukumaara;
     }
 
     public void arvaaKirjain(String kirjain) {
@@ -58,6 +60,7 @@ public class HirsipuuLogiikka {
         }
         if (!salattuSana.contains("_")) {
             System.out.println("Hienoa, arvasit sanan!");
+            this.arvattu = true;
         }
         return salattuSana;
     }
